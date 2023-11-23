@@ -1,6 +1,7 @@
 import requests
 
 from src.abstract_class_api import AbstractJobAPI
+from src.data_json.work_with_json import WorkWithJson
 
 
 class RequestHH(AbstractJobAPI):
@@ -12,4 +13,4 @@ class RequestHH(AbstractJobAPI):
 
     def request(self):
         responce = requests.get(self.url, self.parameter)
-        return responce.json()
+        WorkWithJson.save_json(responce.json()['items'])
